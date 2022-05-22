@@ -17,7 +17,7 @@ stdout.write('Hello, Friend! What is your name? \n');
 let writeableStream = fs.createWriteStream('text.txt');
 
 stdin.on('data', data => {
-    if (data.toString().trim() === 'exit') {
+    if (data.toString().trim().toLowerCase() === 'exit') {
         process.exit();
     } else {
         fs.appendFile(filePath, data, err => {
