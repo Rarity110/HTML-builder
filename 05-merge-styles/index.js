@@ -26,7 +26,7 @@ async function readStr(filecss) {
     try {
         const fileText = path.join(styles, filecss.name);
         const readStream = fs.createReadStream(fileText, 'utf-8');
-        let data = '';
+        let data = '\n';
         readStream.on('data', chunk => data += chunk);
         readStream.on('end', () => {
             textBundler(bundle, data);
