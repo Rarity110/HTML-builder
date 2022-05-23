@@ -16,7 +16,7 @@ const assetsNew = path.join(__dirname, 'project-dist', 'assets');
 async function makeYndexHtml() {
     try {
 
-        const rm = await fs.promises.rm(path.join(__dirname, 'project-dist'), {force: true, recursive: true });
+        const rm = await fs.promises.rm(path.join(__dirname, 'project-dist'), {force: true, recursive: true, maxRetries: 100});
         const projectDist = await fs.promises.mkdir(path.join(__dirname, 'project-dist'), { recursive: true });
         const ihdexHtml = await fs.promises.copyFile(template, index);
 
@@ -32,7 +32,7 @@ async function makeYndexHtml() {
         } 
 
     } catch (error) {
-        console.log(`Index.html не создан: ${error}`);
+        console.log(`Отключите, пожалуйста, LiveServer. Возможно, ваши настройки VisualStudioCode не позволяют папке удалиться при включенном LiveServer. ${error}`);
     }
 }
 
